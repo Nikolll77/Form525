@@ -48,7 +48,7 @@ type
     ToolButton6: TToolButton;
     ToolButton7: TToolButton;
     Panel1: TPanel;
-    DateTimePicker2: TDateTimePicker;
+    DateTimePicker22: TDateTimePicker;
     OpenDialog1: TOpenDialog;
     mykod: TIntegerField;
     mykodobl: TIntegerField;
@@ -71,6 +71,7 @@ type
     countryABR: TWideStringField;
     countryname: TWideStringField;
     frDesigner1: TfrxDesigner;
+    DateTimePicker3: TDateTimePicker;
     procedure N5Click(Sender: TObject);
     procedure N10Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -139,6 +140,7 @@ end;
 procedure TmainForm.FormShow(Sender: TObject);
 begin
    DateTimePicker1.DateTime:=date;
+   DateTimePicker3.DateTime:=date;   
    mon:=MonthOfTheYear(DateTimePicker1.DateTime);
    year:=YearOF(DateTimePicker1.DateTime);
    start:=1;
@@ -167,7 +169,13 @@ end;
 
 procedure TmainForm.N5252Click(Sender: TObject);
 var smon,s:string; i:integer;
-begin
+date1,date2:string;
+
+begin       
+   // 10.8 период дат
+   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+   
    case mainform.mon of
      1: smon:='01';
      2: smon:='02';
@@ -204,7 +212,11 @@ begin
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,country,isres,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#) and (kodobl=:Param1)and(status="2") Group by kodval,country,isres');
+
+   //10.8
+   //   mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#) and (kodobl=:Param1)and(status="2") Group by kodval,country,isres');
+   mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#) and (kodobl=:Param1)and(status="2") Group by kodval,country,isres');
+
    mainForm.test.Parameters.ParamByName('Param1').Value:=i;
    mainForm.test.Open;
    if not(mainForm.test.IsEmpty) then
@@ -246,7 +258,11 @@ begin
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,country,isres,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#) and (kodobl=:Param1)and(status="1") Group by kodval,country,isres');
+
+   //10.8
+   //mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#) and (kodobl=:Param1)and(status="1") Group by kodval,country,isres');
+   mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#) and (kodobl=:Param1)and(status="1") Group by kodval,country,isres');
+
    mainForm.test.Parameters.ParamByName('Param1').Value:=i;
    mainForm.test.Open;
    if not(mainForm.test.IsEmpty) then
@@ -287,8 +303,14 @@ begin
    if mainform.stat.Locate('kod',inttostr(i),[])=true then mainform.frReport1.script.variables['FILIA'] :=mainform.stat['name']
    else mainform.frReport1.script.variables['FILIA'] :='';
    mainform.frReport1.script.variables['date'] := FormatDateTime('dd-mm-yyyy',Date);
-   mainform.frReport1.script.variables['mounth'] := FormatDateTime('mmmm',mainForm.DateTimePicker1.Date);
-   mainform.frReport1.script.variables['year'] := FormatDateTime('yyyy',mainForm.DateTimePicker1.Date);
+
+   //10.8
+   //mainform.frReport1.script.variables['mounth'] := FormatDateTime('mmmm',mainForm.DateTimePicker1.Date);
+   //mainform.frReport1.script.variables['year'] := FormatDateTime('yyyy',mainForm.DateTimePicker1.Date);
+   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+   mainform.frReport1.script.variables['date1'] := date1;
+   mainform.frReport1.script.variables['date2'] := date2;
 
    if i=1 then mainform.frReport1.LoadFromFile('data\f1.fr3')
    else if (i>1)and(i<26) then mainform.frReport1.LoadFromFile('data\f525.fr3')
@@ -329,12 +351,12 @@ end;
 
 procedure TmainForm.tb6Click(Sender: TObject);
 begin
-   panel1.Visible:=true;
+{   panel1.Visible:=true;
    if (MessageDlg('Дата надання звіту '+datetostr(DateTimePicker2.Date)+' ?', mtInformation, [mbYes, mbNo], 0) = mrYes) then
-   begin
+   begin   }
       N5252Click(Self);
-      panel1.Visible:=false;
-   end;
+{      panel1.Visible:=false;
+   end;  }
 end;
 
 procedure TmainForm.tb7Click(Sender: TObject);

@@ -18,7 +18,7 @@ object periodform: Tperiodform
   TextHeight = 13
   object Label1: TLabel
     Left = 263
-    Top = 11
+    Top = 3
     Width = 257
     Height = 20
     Alignment = taCenter
@@ -41,21 +41,6 @@ object periodform: Tperiodform
     ItemHeight = 13
     TabOrder = 0
   end
-  object DateTimePicker1: TDateTimePicker
-    Left = 528
-    Top = 10
-    Width = 121
-    Height = 24
-    Date = 40967.726834305560000000
-    Time = 40967.726834305560000000
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 1
-  end
   object GroupBox1: TGroupBox
     Left = 260
     Top = 47
@@ -68,7 +53,7 @@ object periodform: Tperiodform
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     object Label2: TLabel
       Left = 8
       Top = 50
@@ -265,7 +250,7 @@ object periodform: Tperiodform
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     object Label5: TLabel
       Left = 9
       Top = 50
@@ -451,9 +436,9 @@ object periodform: Tperiodform
     end
   end
   object Button1: TButton
-    Left = 656
-    Top = 8
-    Width = 185
+    Left = 712
+    Top = 24
+    Width = 129
     Height = 25
     Caption = #1060#1086#1088#1084#1091#1074#1072#1090#1080
     Font.Charset = DEFAULT_CHARSET
@@ -462,7 +447,7 @@ object periodform: Tperiodform
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button1Click
   end
   object CheckBox1: TCheckBox
@@ -477,7 +462,7 @@ object periodform: Tperiodform
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 4
     OnClick = CheckBox1Click
   end
 end

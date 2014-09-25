@@ -110,10 +110,10 @@ ActiveLang=
 ProjectLang=
 RootDir=
 [Version Info]
-IncludeVerInfo=0
+IncludeVerInfo=1
 AutoIncBuild=0
-MajorVer=1
-MinorVer=0
+MajorVer=10
+MinorVer=8
 Release=0
 Build=0
 Debug=0
@@ -126,11 +126,11 @@ CodePage=1251
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.0.0.0
+FileVersion=10.8.0.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
-ProductVersion=1.0.0.0
+ProductVersion=10.8
 Comments=

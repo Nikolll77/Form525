@@ -102,7 +102,14 @@ end;
 
 procedure Tnewform.ListBox1Click(Sender: TObject);
 var s:string; nom,i,j:integer;
-begin
+date1,date2:string;
+
+begin       
+   // 10.8 период дат
+   date1:=FormatDateTime('dd-mm-yyyy',datetimepicker1.DateTime);
+
+
+   
   Edit1.Text:=ListBox1.Items.Strings[ListBox1.ItemIndex];
   s:=Edit1.Text;
   mainform.test.SQL.Clear;
@@ -116,15 +123,23 @@ begin
   edit2.Text:=inttostr(nom);
   mainform.my.SQL.Clear;
   mainForm.my.SQL.Add('SELECT * FROM data\oper.oper');
-  mainForm.my.SQL.Add('WHERE (kod=:Param1)and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Order by status,kodval,isres');
+  //10.8
+  //mainForm.my.SQL.Add('WHERE (kod=:Param1)and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Order by status,kodval,isres');
+  mainForm.my.SQL.Add('WHERE (kod=:Param1)and(firstdate=#' +date1+  '#) Order by status,kodval,isres');
+
   mainForm.my.Parameters.ParamByName('Param1').Value:=nom;
   mainForm.my.Open;
 
   mainform.stat.SQL.Clear;
   mainForm.stat.SQL.Add('SELECT kodval,sum(summa)as s FROM data\oper.oper');
-  mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="1")and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Group by kodval');
+
+  //10.8
+  //mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="1")and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Group by kodval');
+  mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="1")and(firstdate=#' + date1 + '#) Group by kodval');
+
   mainForm.stat.Parameters.ParamByName('Param1').Value:=nom;
   mainForm.stat.Open;
+
   if not(mainForm.stat.IsEmpty) then
   begin
      if mainForm.stat.Locate('kodval','840',[])=true then label2.Caption:='USD(840)='+floattostr(mainForm.stat['s']/100)
@@ -142,7 +157,10 @@ begin
 
   mainform.stat.SQL.Clear;
   mainForm.stat.SQL.Add('SELECT kodval,sum(summa)as s FROM data\oper.oper');
-  mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="2")and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Group by kodval');
+  //10.8
+  //mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="2")and(firstdate=#' + FormatDateTime('dd-mm-yyyy', strtodate( inttostr(mainform.mon)+'.01.'+inttostr(mainform.year))) + '#) Group by kodval');
+  mainForm.stat.SQL.Add('WHERE (kod=:Param1)and(status="2")and(firstdate=#' + date1 + '#) Group by kodval');
+
   mainForm.stat.Parameters.ParamByName('Param1').Value:=nom;
   mainForm.stat.Open;
   if not(mainForm.stat.IsEmpty) then

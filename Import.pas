@@ -87,10 +87,12 @@ begin
       ComboBox2.Items.Add(mainform.test['name']);
       mainForm.test.Next;
    end;
+
 end;
 
 procedure TfImport.Button1Click(Sender: TObject);
 var numobl,numfil,i:integer; myflag:boolean;
+day:string;
 begin
    memo1.Lines.LoadFromFile(Listbox1.Items.Strings[Listbox1.itemindex]);
    mainForm.test.Close;
@@ -166,8 +168,13 @@ begin
          mainform.test.Parameters.ParamByName('Param5').Value:=strtoint(copy(memo1.Lines.Strings[i],9,length(memo1.Lines.Strings[i])));
          mainform.test.Parameters.ParamByName('Param6').Value:=copy(memo1.Lines.Strings[i],8,1);
          mainform.test.Parameters.ParamByName('Param7').Value:=FormatDateTime('dd-mm-yyyy',datetimepicker2.DateTime);
-         mainform.test.Parameters.ParamByName('Param8').Value:=FormatDateTime('dd-mm-yyyy',strtodate('01.'+inttostr(mainform.mon)+'.'+inttostr(mainform.year)));
-         mainform.test.Parameters.ParamByName('Param9').Value:=FormatDateTime('dd-mm-yyyy',strtodate(inttostr(mainform.fin)+'.'+inttostr(mainform.mon)+'.'+inttostr(mainform.year)));
+
+         //10.8 переключаем учет по дням
+         {mainform.test.Parameters.ParamByName('Param8').Value:=FormatDateTime('dd-mm-yyyy',strtodate('01.'+inttostr(mainform.mon)+'.'+inttostr(mainform.year)));
+         mainform.test.Parameters.ParamByName('Param9').Value:=FormatDateTime('dd-mm-yyyy',strtodate(inttostr(mainform.fin)+'.'+inttostr(mainform.mon)+'.'+inttostr(mainform.year)));}
+         mainform.test.Parameters.ParamByName('Param8').Value:=FormatDateTime('dd-mm-yyyy',datetimepicker2.DateTime);
+         mainform.test.Parameters.ParamByName('Param9').Value:=FormatDateTime('dd-mm-yyyy',datetimepicker2.DateTime);
+
          mainform.test.Parameters.ParamByName('Param10').Value:=copy(memo1.Lines.Strings[i],1,1);
          mainform.test.ExecSQL;
          i:=i+1;
@@ -193,11 +200,15 @@ begin
          12:mainform.test['Dec']:=true;
       end;
       mainform.test.Post;
+      //10.8
+      day:=FormatDateTime('dd',datetimepicker2.DateTime);
       if DirectoryExists('Arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year)) then
-         CopyFile(Pchar(Listbox1.Items.Strings[Listbox1.ItemIndex]), Pchar(path+'\arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year)+'\'+memo1.Lines.Strings[0]+'.txt'), true)
+        //добавили день к концу названия файла
+         CopyFile(Pchar(Listbox1.Items.Strings[Listbox1.ItemIndex]), Pchar(path+'\arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year)+'\'+memo1.Lines.Strings[0]+'_'+day+'.txt'), true)
       else begin
               CreateDir('Arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year));
-              CopyFile(Pchar(Listbox1.Items.Strings[Listbox1.ItemIndex]), Pchar(path+'\arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year)+'\'+memo1.Lines.Strings[0]+'.txt'), true);
+              //добавили день к концу названия файла
+              CopyFile(Pchar(Listbox1.Items.Strings[Listbox1.ItemIndex]), Pchar(path+'\arh\'+inttostr(mainform.mon)+'_'+inttostr(mainform.year)+'\'+memo1.Lines.Strings[0]+'_'+day+'.txt'), true);
            end;
       DeleteFile(Pchar(Listbox1.Items.Strings[Listbox1.ItemIndex]));
       Listbox1.DeleteSelected;

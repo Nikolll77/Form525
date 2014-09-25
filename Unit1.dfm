@@ -1,11 +1,11 @@
 object makezvitform: Tmakezvitform
-  Left = 455
+  Left = 461
   Top = 272
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1091#1074#1072#1085#1085#1103' '#1079#1074#1110#1090#1091
-  ClientHeight = 106
-  ClientWidth = 292
+  ClientHeight = 303
+  ClientWidth = 286
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -98,5 +98,14 @@ object makezvitform: Tmakezvitform
     ParentFont = False
     TabOrder = 5
     OnClick = RadioButton3Click
+  end
+  object Memo1: TMemo
+    Left = 16
+    Top = 128
+    Width = 225
+    Height = 137
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 6
   end
 end

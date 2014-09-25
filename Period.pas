@@ -10,7 +10,6 @@ type
   Tperiodform = class(TForm)
     ListBox1: TCheckListBox;
     Label1: TLabel;
-    DateTimePicker1: TDateTimePicker;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     Button1: TButton;
@@ -67,7 +66,9 @@ uses Main;
 procedure Tperiodform.FormShow(Sender: TObject);
 var i,j:integer;
 begin
-   DateTimePicker1.Date:=mainform.DateTimePicker1.Date;
+//   DateTimePicker1.Date:=mainform.DateTimePicker1.Date;
+   Label1.Caption:='Період формування звітності: 3 '+FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime)+' до '+ FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);;
+
    ListBox1.Clear;
    mainForm.test.Close;
    mainform.test.SQL.Clear;
@@ -83,7 +84,13 @@ end;
 
 procedure Tperiodform.Button1Click(Sender: TObject);
 var s,smon,SQLtext:string; nom,i,j,prap:integer;
-begin
+date1,date2:string;
+
+begin       
+   // 10.8 период дат
+   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+   
    SQLtext:=''; prap:=0;
    Label8.Caption:='0';
    Label9.Caption:='0';
@@ -121,13 +128,17 @@ begin
    if prap<1 then Exit;
    SQLtext:=copy(SQLtext,5,length(SQLtext));
    if SQLtext<>'' then SQLtext:='and ('+SQLtext+') ';
-   smon:=copy(datetostr(DateTimePicker1.date),4,2);
+   smon:=copy(datetostr(MainForm.DateTimePicker1.date),4,2);
 
    mainForm.test.Close;
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="1") AND (isres="1") Group by kodval');
+
+   //10.8
+   //mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="1") AND (isres="1") Group by kodval');
+   mainForm.test.SQL.Add('WHERE ((firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#)'+')'+SQLtext+' AND (status="1") AND (isres="1") Group by kodval');
+
    mainForm.test.Open;
    if not(mainForm.test.Eof) then
    begin
@@ -146,11 +157,9 @@ begin
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   //10.7.5 меняем за день
+   //10.8 меняем за день
    //mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="1") AND (isres="2") Group by kodval');
-   mainForm.test.SQL.Add('WHERE ((firstdate=#' + FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+
-                         '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+
-                         '#)'+')'+SQLtext+' AND (status="1") AND (isres="2") Group by kodval');
+     mainForm.test.SQL.Add('WHERE ((firstdate>=#' +date1 +'# )and ( lastdate<=#' + date2+  '#)'+')'+SQLtext+' AND (status="1") AND (isres="2") Group by kodval');
 
    mainForm.test.Open;
    if not(mainForm.test.Eof) then
@@ -170,7 +179,11 @@ begin
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="1") Group by kodval');
+
+   //10.8
+   //mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="1") Group by kodval');
+   mainForm.test.SQL.Add('WHERE ((firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="1") Group by kodval');
+
    mainForm.test.Open;
    if not(mainForm.test.Eof) then
    begin
@@ -189,7 +202,11 @@ begin
    mainform.test.SQL.Clear;
    mainform.test.SQL.Add('SELECT kodval,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
-   mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="2") Group by kodval');
+
+   //10.8
+   //mainForm.test.SQL.Add('WHERE ((firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="2") Group by kodval');
+   mainForm.test.SQL.Add('WHERE ((firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#)'+')'+SQLtext+' AND (status="2") AND (isres="2") Group by kodval');
+
    mainForm.test.Open;
    if not(mainForm.test.Eof) then
    begin

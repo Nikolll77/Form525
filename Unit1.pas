@@ -14,6 +14,7 @@ type
     ComboBox1: TComboBox;
     Button1: TButton;
     RadioButton3: TRadioButton;
+    Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
@@ -36,9 +37,13 @@ uses Main;
 
 procedure Tmakezvitform.Button1Click(Sender: TObject);
 var s,smon:string; koddd:integer;
-zxnach1:string;
-zxnach2:integer;
-begin
+date1,date2:string;
+
+begin       
+   // 10.8 период дат
+   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+
    mainForm.stat.Close;
    mainform.stat.SQL.Clear;
    mainform.stat.SQL.Add('DELETE FROM tmp1');
@@ -96,10 +101,35 @@ begin
    mainform.test.SQL.Add('SELECT kodval,country,isres,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
    if RadioButton1.Checked=true then
-      mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(kod=:Param1)and(status="2") Group by kodval,isres,country')
-   else if RadioButton2.Checked=true then mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(kodobl=:Param1)and(status="2") Group by kodval,isres,country')
-        else mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(status="2") Group by kodval,isres,country');
+
+   //10.8 по дням
+     {
+      mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+
+                           '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+
+                            '#)and(kod=:Param1)and(status="2") Group by kodval,isres,country')
+   else if RadioButton2.Checked=true then mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+
+                                                               '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+
+                                                               '#)and(kodobl=:Param1)and(status="2") Group by kodval,isres,country')
+        else mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+
+                                   '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(status="2") Group by kodval,isres,country');
+
+ }
+       mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+
+                           '# )and ( lastdate<=#' + date2+
+                            '#) and (kod=:Param1) and(status="2") Group by kodval,isres,country')
+   else if RadioButton2.Checked=true then mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+
+                                                               '# )and ( lastdate<=#' + date2+
+                                                               '#)and(kodobl=:Param1) and(status="2") Group by kodval,isres,country')
+        else mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+
+                                   '# )and ( lastdate<=#' + date2+  '#)and(status="2") Group by kodval,isres,country');
+    // конец по дням
+
+
+
    if RadioButton3.Checked=false then mainform.test.Parameters.ParamByName('Param1').Value:=koddd;
+
+
+   //ShowMessage(mainForm.test.SQL.Text);
    mainForm.test.Open;
 
    if not(mainForm.test.IsEmpty) then
@@ -144,12 +174,26 @@ begin
    mainform.test.SQL.Add('SELECT kodval,country,isres,sum(summa) as s');
    mainform.test.SQL.Add('FROM data\oper.oper');
    if RadioButton1.Checked=true then
+
+   //10.8
+   {
       mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(kod=:Param1)and(status="1") Group by kodval,country,isres')
    else if RadioButton2.Checked=true then mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(kodobl=:Param1)and(status="1") Group by kodval,country,isres')
         else mainForm.test.SQL.Add('WHERE ( firstdate=#' +FormatDateTime('mm-dd-yyyy',strtodate('01.'+smon+'.'+inttostr(mainform.year)))+ '# )and ( lastdate=#' + FormatDateTime('mm-dd-yyyy',strtodate(inttostr(mainform.fin)+'.'+smon+'.'+inttostr(mainform.year)))+  '#)and(status="1") Group by kodval,country,isres');
+
+   }
+
+      mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+ '#)and(kod=:Param1)and(status="1") Group by kodval,country,isres')
+   else if RadioButton2.Checked=true then mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#)and(kodobl=:Param1)and(status="1") Group by kodval,country,isres')
+        else mainForm.test.SQL.Add('WHERE ( firstdate>=#' +date1+ '# )and ( lastdate<=#' + date2+  '#)and(status="1") Group by kodval,country,isres');
+   //end 10.8
+
    if RadioButton3.Checked=false then mainform.test.Parameters.ParamByName('Param1').Value:=koddd;
+//   ShowMessage(mainForm.test.SQL.Text);
+  { Memo1.Clear;
+   Memo1.Lines.AddStrings(mainForm.test.SQL); }
+
    mainForm.test.Open;
-//   zxnach2:=mainForm.test['s'];
    if not(mainForm.test.IsEmpty) then
    begin
        mainForm.f525in.Open;
@@ -193,9 +237,14 @@ begin
    end;
 
    mainform.frReport1.script.variables['FILIA'] :='';
+
    mainform.frReport1.script.variables['date'] := FormatDateTime('dd-mm-yyyy',Date);
-   mainform.frReport1.script.variables['mounth'] := FormatDateTime('mmmm',mainForm.DateTimePicker1.Date);
-   mainform.frReport1.script.variables['year'] := FormatDateTime('yyyy',mainForm.DateTimePicker1.Date);
+
+   //10.8
+   //mainform.frReport1.script.variables['mounth'] := FormatDateTime('mmmm',mainForm.DateTimePicker1.Date);
+   //mainform.frReport1.script.variables['year'] := FormatDateTime('yyyy',mainForm.DateTimePicker1.Date);
+   mainform.frReport1.script.variables['date1'] := date1;
+   mainform.frReport1.script.variables['date2'] := date2;
 
    mainform.frReport1.LoadFromFile('data\forma525.fr3');
    s := GetCurrentDir;
