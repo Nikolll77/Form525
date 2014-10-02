@@ -173,8 +173,11 @@ date1,date2:string;
 
 begin       
    // 10.8 период дат
-   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
-   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+//   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+//  date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+
+   date1:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker3.DateTime);
    
    case mainform.mon of
      1: smon:='01';
@@ -307,8 +310,8 @@ begin
    //10.8
    //mainform.frReport1.script.variables['mounth'] := FormatDateTime('mmmm',mainForm.DateTimePicker1.Date);
    //mainform.frReport1.script.variables['year'] := FormatDateTime('yyyy',mainForm.DateTimePicker1.Date);
-   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
-   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+   //date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+   //date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
    mainform.frReport1.script.variables['date1'] := date1;
    mainform.frReport1.script.variables['date2'] := date2;
 

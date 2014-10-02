@@ -41,8 +41,11 @@ date1,date2:string;
 
 begin       
    // 10.8 период дат
-   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
-   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+//   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+//   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+
+   date1:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker3.DateTime);
 
    mainForm.stat.Close;
    mainform.stat.SQL.Clear;
@@ -190,8 +193,8 @@ begin
 
    if RadioButton3.Checked=false then mainform.test.Parameters.ParamByName('Param1').Value:=koddd;
 //   ShowMessage(mainForm.test.SQL.Text);
-  { Memo1.Clear;
-   Memo1.Lines.AddStrings(mainForm.test.SQL); }
+   Memo1.Clear;
+   Memo1.Lines.AddStrings(mainForm.test.SQL);
 
    mainForm.test.Open;
    if not(mainForm.test.IsEmpty) then

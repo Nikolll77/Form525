@@ -75,7 +75,8 @@ begin
             SQL.Add('FROM data\oper.oper');
             //10.8
             //SQL.Add('WHERE (firstdate=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker2.Date) + '# and lastdate=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker3.Date)+'#) and (kodobl=:Param1) Group by status,kodval,country,isres');
-            SQL.Add('WHERE (firstdate>=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker2.Date) + '# and lastdate<=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker3.Date)+'#) and (kodobl=:Param1) Group by status,kodval,country,isres');
+            //SQL.Add('WHERE (firstdate>=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker2.Date) + '# and lastdate<=#' + FormatDateTime('mm-dd-yyyy', DateTimePicker3.Date)+'#) and (kodobl=:Param1) Group by status,kodval,country,isres');
+             SQL.Add('WHERE (firstdate>=#' + FormatDateTime('yyyy-mm-dd', DateTimePicker2.Date) + '# and lastdate<=#' + FormatDateTime('yyyy-mm-dd', DateTimePicker3.Date)+'#) and (kodobl=:Param1) Group by status,kodval,country,isres');
             Parameters.ParamByName('Param1').Value:=obl;
          end;
          mainForm.test.open;

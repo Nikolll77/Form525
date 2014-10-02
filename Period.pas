@@ -88,8 +88,11 @@ date1,date2:string;
 
 begin       
    // 10.8 период дат
-   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
-   date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+//   date1:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker1.DateTime);
+//  date2:=FormatDateTime('dd-mm-yyyy',mainForm.datetimepicker3.DateTime);
+
+   date1:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker1.DateTime);
+   date2:=FormatDateTime('yyyy-mm-dd',mainForm.datetimepicker3.DateTime);
    
    SQLtext:=''; prap:=0;
    Label8.Caption:='0';

@@ -106,7 +106,8 @@ date1,date2:string;
 
 begin       
    // 10.8 период дат
-   date1:=FormatDateTime('dd-mm-yyyy',datetimepicker1.DateTime);
+//   date1:=FormatDateTime('dd-mm-yyyy',datetimepicker1.DateTime);
+   date1:=FormatDateTime('yyyy-mm-dd',datetimepicker1.DateTime);
 
 
    
