@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Version="4.12.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41904,5007065162" ReportOptions.Description.Text="" ReportOptions.LastChange="42043,8442941667" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="03546F7003100108446174617365747301010C3200000020446174615365743D226672444244617461536574312220446174615365744E616D653D226672444244617461536574312200010C3200000020446174615365743D226672444244617461536574322220446174615365744E616D653D22667244424461746153657432220000095661726961626C65730100055374796C650100">
+<TfrxReport Version="4.12.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41904,5007065162" ReportOptions.Description.Text="" ReportOptions.LastChange="42125,0063239583" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="03546F7003100108446174617365747301010C3200000020446174615365743D226672444244617461536574312220446174615365744E616D653D226672444244617461536574312200010C3200000020446174615365743D226672444244617461536574322220446174615365744E616D653D22667244424461746153657432220000095661726961626C65730100055374796C650100">
   <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
   <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="256" LeftMargin="6" RightMargin="6" TopMargin="4" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" Bin="65535" BinOtherPages="65535" HGuides.Text="" VGuides.Text="">
     <TfrxReportTitle Name="ReportTitle1" Height="22" Left="0" Top="18,89765" Width="748,34694">
@@ -10,7 +10,7 @@
     <TfrxReportSummary Name="ReportSummary1" Height="102" Left="0" Top="491,3389" Width="748,34694">
       <TfrxMemoView Name="Memo42" Left="287" Top="64,9999999999999" Width="123" Height="18" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Головний бухгалтер"/>
       <TfrxMemoView Name="Memo55" Left="40" Top="11" Width="180" Height="14" ShowHint="False" AutoWidth="True" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="7" ParentFont="False" VAlign="vaCenter" Text="[date] p."/>
-      <TfrxMemoView Name="Memo57" Left="287" Top="9" Width="107" Height="18" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial Cyr" Font.Style="1" ParentFont="False" Text="Голова Правління"/>
+      <TfrxMemoView Name="Memo57" Left="287" Top="9" Width="107" Height="18" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial Cyr" Font.Style="1" ParentFont="False" Text="Керівник"/>
       <TfrxMemoView Name="Memo141" Left="424" Top="9" Width="70" Height="10" ShowHint="False" Font.Charset="0" Font.Color="0" Font.Height="-11" Font.Name="Arial Cyr" Font.Style="0" Frame.Typ="8" ParentFont="False" Text=""/>
       <TfrxMemoView Name="Memo142" Left="514" Top="4" Width="162" Height="18" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial Cyr" Font.Style="1" Frame.Typ="8" HAlign="haCenter" ParentFont="False" Text="Татуріна О.А."/>
       <TfrxMemoView Name="Memo15" Left="40" Top="26,9999999999999" Width="180" Height="18" ShowHint="False" DisplayFormat.FormatStr="dd.mm.yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="7" ParentFont="False" VAlign="vaCenter" Text="_____________________________"/>
@@ -68,7 +68,7 @@
     </TfrxHeader>
     <TfrxHeader Name="MasterHeader2" Height="14" Left="0" Top="336,37817" Width="748,34694">
       <TfrxMemoView Name="Memo63" Left="23" Top="0" Width="692" Height="14" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Надходження переказів в Україну"/>
-      <TfrxMemoView Name="Memo64" Left="-2" Top="0" Width="25" Height="14" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="2.&#13;&#10;&#13;&#10;"/>
+      <TfrxMemoView Name="Memo64" Left="-2" Top="0" Width="25" Height="14" ShowHint="False" Font.Charset="204" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="2.&#13;&#10;"/>
     </TfrxHeader>
   </TfrxReportPage>
 </TfrxReport>

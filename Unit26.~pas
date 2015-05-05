@@ -76,7 +76,7 @@ end;
 procedure TPreview39.ToolButton2Click(Sender: TObject);
 var s : string;
 begin
-   SaveDialog1.FileName:='#f11wf'+inttostr(form39.mon)+form39.den+'.g'+form39.den+'1';
+   SaveDialog1.FileName:='#f11wf'+inttostr(form39.mon)+form39.den+'.g'+form39.mn+'1';
    s := GetCurrentDir;
    if SaveDialog1.Execute then Memo1.Lines.SaveToFile(SaveDialog1.FileName);
    SetCurrentDir(s);
