@@ -1,43 +1,58 @@
-unit Unit26;
+unit Unit14;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ImgList, ComCtrls, ToolWin, StdCtrls, Printers;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, Printers, ImgList, ComCtrls,
+  ToolWin;
 
 type
-  TPreview39 = class(TForm)
+  TmPreviewForm = class(TForm)
+    Memo1: TMemo;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
-    ToolButton3: TToolButton;
     ToolButton2: TToolButton;
     ImageList1: TImageList;
-    Memo1: TMemo;
+    ToolButton3: TToolButton;
     SaveDialog1: TSaveDialog;
-    ToolButton4: TToolButton;
+    Panel1: TPanel;
+    Edit1: TEdit;
+    UpDown1: TUpDown;
+    Label1: TLabel;
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
-
+    procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    NomKas:string;
-    ddDate:TDate;
   end;
 
-var Preview39: TPreview39;
+var mPreviewForm:TmPreviewForm;
 
 implementation
 
-uses Unit39;
+uses Main;
 
 {$R *.dfm}
 
-procedure TPreview39.ToolButton1Click(Sender: TObject);
-var i:integer; r:TRect; st:tStringList;
-   procedure PrintStrings(buf : tStrings);
+procedure TmPreviewForm.ToolButton2Click(Sender: TObject);
+var s : string;
+begin
+   s := GetCurrentDir;
+   if SaveDialog1.Execute then Memo1.Lines.SaveToFile(SaveDialog1.FileName);
+   SetCurrentDir(s);
+end;
+
+procedure TmPreviewForm.Edit1Change(Sender: TObject);
+begin
+   Memo1.Font.Size := StrToint(Edit1.Text);
+end;
+
+procedure TmPreviewForm.ToolButton1Click(Sender: TObject);
+var i:integer; f, Prn:TextFile; N:pChar; r:TRect; st:tStringList;
+procedure PrintStrings(buf : tStrings);
    var jj:integer;
    begin
       Printer.Canvas.Font := Memo1.Font;
@@ -52,10 +67,11 @@ var i:integer; r:TRect; st:tStringList;
                        Buf.Strings[jj]);
          Canvas.Brush.Color := clBlack;
          EndDoc;
-       end;
-       Printer.Refresh;
+      end;
+      Printer.Refresh;
    end;
-begin
+   begin
+      Printer.Orientation := poPortrait;
       st := tStringList.Create;
       st.Clear;
       for i := 0 to Memo1.Lines.Count do
@@ -71,14 +87,5 @@ begin
          end;
       end;
       PrintStrings(st);
-end;
-
-procedure TPreview39.ToolButton2Click(Sender: TObject);
-var s : string;
-begin
-   SaveDialog1.FileName:='#f11wf'+inttostr(form39.mon)+form39.den+'.d'+form39.den+'1';
-   s := GetCurrentDir;
-   if SaveDialog1.Execute then Memo1.Lines.SaveToFile(SaveDialog1.FileName);
-   SetCurrentDir(s);
-end;
+   end;
 end.

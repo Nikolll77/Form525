@@ -10,7 +10,7 @@ type
   TForm39 = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
-    DateTimePicker1: TDateTimePicker;
+    DateTimePicke1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
     DateTimePicker3: TDateTimePicker;
     Label5: TLabel;
@@ -46,7 +46,7 @@ begin
 
    numstrings:=0;
    mon:=MonthOfTheYear(date);
-   p:=strtoint(copy(datetostr(datetimepicker1.DateTime),1,2));
+   p:=strtoint(copy(datetostr(datetimepicke1.DateTime),1,2));
    case p of
       1:den:='1'; 2:den:='2'; 3:den:='3'; 4:den:='4'; 5:den:='5'; 6:den:='6';
       7:den:='7'; 8:den:='8'; 9:den:='9'; 10:den:='a'; 11:den:='b'; 12:den:='c';
@@ -140,7 +140,7 @@ begin
    begin
       insert('0',k2,1);
    end;
-   case mainform.mon of
+ {  case mainform.mon of
    //30.04.2015   
 {   1: smon:='02';
    2: smon:='03';
@@ -155,7 +155,7 @@ begin
    11:smon:='12';
    12:smon:='01';     }
 
-   1: smon:='01';
+ {  1: smon:='01';
    2: smon:='02';
    3: smon:='03';
    4: smon:='04';
@@ -167,15 +167,14 @@ begin
    10:smon:='10';
    11:smon:='11';
    12:smon:='12';
-   end;
+   end;  }
+   smon:=copy(datetostr(DateTimePicke1.Date),4,2);
    tv:=tstringlist.Create;
    tv.LoadFromFile('Tmp.txt');
    syear:=inttostr(mainform.year);
 
    //30.04.2015
-   sday:=copy(datetostr(datetimepicker1.DateTime),1,2);
-
-
+   sday:=copy(datetostr(datetimepicke1.DateTime),1,2);
 {   sv:='08='+'01'+smon+syear+'='+copy(datetostr(DateTimePicker2.Date),1,2)+copy(datetostr(DateTimePicker2.Date),4,2)+syear+'='+copy(datetostr(DateTimePicker3.Date),1,2)+copy(datetostr(DateTimePicker3.Date),4,2)+syear
    +'='+copy(datetostr(DateTimePicker1.Date),1,2)+copy(datetostr(DateTimePicker1.Date),4,2)+syear
    +'=1030'+'='+'300926'+'=11='+k2+'='+'#f11wf'+inttostr(mon)+den+'.g'+mn+'1'+'='+'      '+'='+'                                                                ';
@@ -184,12 +183,12 @@ begin
    tv.SaveToFile('#f11wf'+inttostr(form39.mon)+form39.den+'.g'+form39.mn+'1');}
 
    sv:='09='+sday+smon+syear+'='+copy(datetostr(DateTimePicker2.Date),1,2)+copy(datetostr(DateTimePicker2.Date),4,2)+syear+'='+copy(datetostr(DateTimePicker3.Date),1,2)+copy(datetostr(DateTimePicker3.Date),4,2)+syear
-   +'='+copy(datetostr(DateTimePicker1.Date),1,2)+copy(datetostr(DateTimePicker1.Date),4,2)+syear
-   +'=1030'+'='+'300926'+'=11='+k2+'='+'#f11wf'+inttostr(mon)+den+'.g'+den+'1'+'='+'      '+'='+'                                                                ';
+   +'='+copy(datetostr(DateTimePicke1.Date),1,2)+copy(datetostr(DateTimePicke1.Date),4,2)+syear
+   +'=1030'+'='+'300926'+'=11='+k2+'='+'#f11wf'+inttostr(mon)+den+'.d'+den+'1'+'='+'      '+'='+'                                                                ';
    mPreviewForm.Memo1.Lines.Insert(1,sv);
    tv.Insert(0,sv);
-   tv.SaveToFile('#f11wf'+inttostr(form39.mon)+form39.den+'.g'+form39.den+'1');
-
+   tv.SaveToFile('#f11wf'+inttostr(form39.mon)+form39.den+'.d'+form39.den+'1');
+//--------------
 
   // mPreviewForm.Memo1.Lines.Insert(1,'08='+'01'+smon+syear
    //+'='+copy(datetostr(DateTimePicker2.Date),1,2)+copy(datetostr(DateTimePicker2.Date),4,2)+syear
@@ -209,7 +208,7 @@ end;
 
 procedure TForm39.FormCreate(Sender: TObject);
 begin
-   datetimePicker1.Date := date;
+   datetimePicke1.Date := date;
    datetimePicker2.Date := date;
    datetimePicker3.Date := date;
 end;

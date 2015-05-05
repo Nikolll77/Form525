@@ -1,6 +1,6 @@
 object Form39: TForm39
-  Left = 365
-  Top = 199
+  Left = 832
+  Top = 413
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1091#1074#1072#1085#1085#1103' '#1092#1072#1081#1083#1091' '#1076#1083#1103' '#1053#1041#1059
@@ -69,7 +69,7 @@ object Form39: TForm39
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object DateTimePicker1: TDateTimePicker
+  object DateTimePicke1: TDateTimePicker
     Left = 120
     Top = 0
     Width = 117

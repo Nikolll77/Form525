@@ -1,6 +1,6 @@
 object Preview39: TPreview39
-  Left = 278
-  Top = 83
+  Left = 617
+  Top = 401
   Width = 696
   Height = 480
   Caption = #1055#1086#1087#1077#1088#1077#1076#1085#1110#1081' '#1087#1077#1088#1077#1075#1083#1103#1076' '
@@ -17,7 +17,7 @@ object Preview39: TPreview39
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 688
+    Width = 680
     Height = 42
     AutoSize = True
     ButtonHeight = 38
@@ -63,8 +63,8 @@ object Preview39: TPreview39
   object Memo1: TMemo
     Left = 0
     Top = 42
-    Width = 688
-    Height = 404
+    Width = 680
+    Height = 400
     Align = alClient
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET

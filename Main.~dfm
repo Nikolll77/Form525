@@ -1,6 +1,6 @@
 object mainForm: TmainForm
-  Left = 265
-  Top = 299
+  Left = 441
+  Top = 297
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072' - 525'
@@ -342,8 +342,8 @@ object mainForm: TmainForm
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 41904.500440405100000000
-    ReportOptions.LastChange = 42125.007950462960000000
+    ReportOptions.CreateDate = 41904.513054375000000000
+    ReportOptions.LastChange = 42125.013011990740000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -376,7 +376,7 @@ object mainForm: TmainForm
       Bin = 65535
       BinOtherPages = 65535
       object ReportTitle1: TfrxReportTitle
-        Height = 282.000000000000000000
+        Height = 280.000000000000000000
         Top = 18.897650000000000000
         Width = 748.346940000000000000
         object Line1: TfrxLineView
@@ -423,7 +423,7 @@ object mainForm: TmainForm
         object Memo4: TfrxMemoView
           Left = 449.000000000000000000
           Top = 5.000000000000000000
-          Width = 187.338590000000000000
+          Width = 176.000000000000000000
           Height = 18.000000000000000000
           ShowHint = False
           Font.Charset = RUSSIAN_CHARSET
@@ -452,9 +452,9 @@ object mainForm: TmainForm
           ParentFont = False
         end
         object Memo6: TfrxMemoView
-          Left = 193.000000000000000000
+          Left = 136.307050000000000000
           Top = 216.000000000000000000
-          Width = 276.000000000000000000
+          Width = 453.637910000000000000
           Height = 20.000000000000000000
           ShowHint = False
           Font.Charset = RUSSIAN_CHARSET
@@ -479,7 +479,6 @@ object mainForm: TmainForm
           Font.Height = -9
           Font.Name = 'Arial Cyr'
           Font.Style = []
-          HAlign = haBlock
           Memo.UTF8 = (
             
               #1056#1119#1056#1109#1056#1169#1056#176#1057#8221#1057#8218#1057#1034#1057#1027#1057#1039' '#1056#181#1056#187#1056#181#1056#1108#1057#8218#1057#1026#1056#1109#1056#1029#1056#1029#1056#1109#1057#1035' '#1056#1111#1056#1109#1057#8364#1057#8218#1056#1109#1057#1035' '#1057#1107#1056#1111#1056#1109#1056#1030#1056 +
@@ -495,7 +494,7 @@ object mainForm: TmainForm
           ParentFont = False
         end
         object Memo18: TfrxMemoView
-          Left = 495.000000000000000000
+          Left = 500.000000000000000000
           Top = 262.000000000000000000
           Width = 192.000000000000000000
           Height = 16.000000000000000000
@@ -511,10 +510,10 @@ object mainForm: TmainForm
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo15: TfrxMemoView
+        object Memo20: TfrxMemoView
           Left = -3.000000000000000000
           Top = 262.000000000000000000
-          Width = 470.000000000000000000
+          Width = 477.000000000000000000
           Height = 16.000000000000000000
           ShowHint = False
           Font.Charset = RUSSIAN_CHARSET
@@ -528,9 +527,242 @@ object mainForm: TmainForm
           VAlign = vaCenter
         end
       end
+      object MasterFooter2: TfrxFooter
+        Height = 18.000000000000000000
+        Top = 668.976810000000000000
+        Width = 748.346940000000000000
+      end
+      object ReportSummary1: TfrxReportSummary
+        Height = 102.000000000000000000
+        Top = 748.346940000000000000
+        Width = 748.346940000000000000
+        object Memo42: TfrxMemoView
+          Left = 287.000000000000000000
+          Top = 65.000000000000000000
+          Width = 123.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            #1056#8216#1057#1107#1057#8230#1056#1110#1056#176#1056#187#1057#8218#1056#181#1057#1026)
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo55: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 11.000000000000000000
+          Width = 180.000000000000000000
+          Height = 14.000000000000000000
+          ShowHint = False
+          AutoWidth = True
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsItalic, fsUnderline]
+          Memo.UTF8 = (
+            '[date] p.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo57: TfrxMemoView
+          Left = 287.000000000000000000
+          Top = 9.000000000000000000
+          Width = 107.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            #1056#1113#1056#181#1057#1026#1057#8211#1056#1030#1056#1029#1056#1105#1056#1108)
+          ParentFont = False
+        end
+        object Memo141: TfrxMemoView
+          Left = 424.000000000000000000
+          Top = 9.000000000000000000
+          Width = 70.000000000000000000
+          Height = 10.000000000000000000
+          ShowHint = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          Frame.Typ = [ftBottom]
+          ParentFont = False
+        end
+        object Memo142: TfrxMemoView
+          Left = 514.000000000000000000
+          Top = 4.000000000000000000
+          Width = 162.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          HAlign = haCenter
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 27.000000000000000000
+          Width = 180.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          DisplayFormat.FormatStr = 'dd.mm.yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsItalic, fsUnderline]
+          Memo.UTF8 = (
+            '_____________________________')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo23: TfrxMemoView
+          Left = 424.000000000000000000
+          Top = 23.000000000000000000
+          Width = 70.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '('#1056#1111#1057#8211#1056#1169#1056#1111#1056#1105#1057#1027')')
+          ParentFont = False
+        end
+        object Memo43: TfrxMemoView
+          Left = 424.000000000000000000
+          Top = 66.000000000000000000
+          Width = 70.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          Memo.UTF8 = (
+            '______________')
+          ParentFont = False
+        end
+        object Memo58: TfrxMemoView
+          Left = 424.000000000000000000
+          Top = 84.000000000000000000
+          Width = 70.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '('#1056#1111#1057#8211#1056#1169#1056#1111#1056#1105#1057#1027')')
+          ParentFont = False
+        end
+        object Memo68: TfrxMemoView
+          Left = 514.000000000000000000
+          Top = 23.000000000000000000
+          Width = 162.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '('#1056#1111#1057#1026#1057#8211#1056#183#1056#1030#1056#1105#1057#8240#1056#181', '#1057#8211#1056#1029#1057#8211#1057#8224#1057#8211#1056#176#1056#187#1056#1105')')
+          ParentFont = False
+        end
+        object Memo69: TfrxMemoView
+          Left = 514.000000000000000000
+          Top = 62.000000000000000000
+          Width = 162.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          HAlign = haCenter
+          ParentFont = False
+        end
+        object Memo70: TfrxMemoView
+          Left = 514.000000000000000000
+          Top = 81.000000000000000000
+          Width = 162.000000000000000000
+          Height = 18.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            '('#1056#1111#1057#1026#1057#8211#1056#183#1056#1030#1056#1105#1057#8240#1056#181', '#1057#8211#1056#1029#1057#8211#1057#8224#1057#8211#1056#176#1056#187#1056#1105')')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 49.000000000000000000
+          Width = 146.000000000000000000
+          Height = 11.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            
+              '('#1056#1111#1057#1026#1057#8211#1056#183#1056#1030#1056#1105#1057#8240#1056#181' '#1056#1030#1056#1105#1056#1108#1056#1109#1056#1029#1056#176#1056#1030#1057#8224#1057#1039', '#1056#1029#1056#1109#1056#1112#1056#181#1057#1026' '#1057#8218#1056#181#1056#187#1056#181#1057#8222#1056#1109#1056#1029#1057 +
+              #1107')')
+          ParentFont = False
+        end
+        object Memo77: TfrxMemoView
+          Left = 40.000000000000000000
+          Top = 65.000000000000000000
+          Width = 146.000000000000000000
+          Height = 11.000000000000000000
+          ShowHint = False
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clBlack
+          Font.Height = -8
+          Font.Name = 'Arial Cyr'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8 = (
+            #1056#164#1057#8211#1056#187#1056#1109#1056#1029#1056#181#1056#1029#1056#1108#1056#1109' '#1056#8250'.'#1056#1113'. '#1057#8218#1056#181#1056#187'. 278-41-59')
+          ParentFont = False
+        end
+      end
       object PageHeader1: TfrxPageHeader
         Height = 94.000000000000000000
-        Top = 325.039580000000000000
+        Top = 321.260050000000000000
         Width = 748.346940000000000000
         object Memo10: TfrxMemoView
           Left = -2.000000000000000000
@@ -837,7 +1069,7 @@ object mainForm: TmainForm
             #1056#183#1056#176#1057#1026#1056#176#1057#8230#1056#1109#1056#1030#1056#176#1056#1029#1056#1109' '#1056#1029#1056#176' '#1057#1026#1056#176#1057#8230#1057#1107#1056#1029#1056#1109#1056#1108)
           ParentFont = False
         end
-        object Memo19: TfrxMemoView
+        object Memo16: TfrxMemoView
           Left = 392.000000000000000000
           Top = 80.000000000000000000
           Width = 111.000000000000000000
@@ -857,7 +1089,7 @@ object mainForm: TmainForm
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo16: TfrxMemoView
+        object Memo25: TfrxMemoView
           Left = 503.000000000000000000
           Top = 38.000000000000000000
           Width = 100.000000000000000000
@@ -875,7 +1107,7 @@ object mainForm: TmainForm
             #1056#1110#1056#1109#1057#8218#1057#8211#1056#1030#1056#1108#1056#1109#1057#1035)
           ParentFont = False
         end
-        object Memo22: TfrxMemoView
+        object Memo29: TfrxMemoView
           Left = 503.000000000000000000
           Top = 80.000000000000000000
           Width = 100.000000000000000000
@@ -898,7 +1130,7 @@ object mainForm: TmainForm
       end
       object Band1: TfrxMasterData
         Height = 14.000000000000000000
-        Top = 517.795610000000000000
+        Top = 514.016080000000000000
         Width = 748.346940000000000000
         Columns = 1
         ColumnWidth = 200.000000000000000000
@@ -976,7 +1208,7 @@ object mainForm: TmainForm
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo20: TfrxMemoView
+        object Memo22: TfrxMemoView
           Left = 392.000000000000000000
           Width = 111.000000000000000000
           Height = 14.000000000000000000
@@ -994,13 +1226,13 @@ object mainForm: TmainForm
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo23: TfrxMemoView
+        object Memo30: TfrxMemoView
           Left = 503.000000000000000000
           Width = 100.000000000000000000
           Height = 14.000000000000000000
           ShowHint = False
           DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%g'
+          DisplayFormat.FormatStr = '%2.0g'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = RUSSIAN_CHARSET
           Font.Color = clBlack
@@ -1017,7 +1249,7 @@ object mainForm: TmainForm
       end
       object Band2: TfrxMasterData
         Height = 14.000000000000000000
-        Top = 634.961040000000000000
+        Top = 631.181510000000000000
         Width = 748.346940000000000000
         Columns = 1
         ColumnWidth = 200.000000000000000000
@@ -1136,12 +1368,12 @@ object mainForm: TmainForm
       end
       object MasterFooter1: TfrxFooter
         Height = 18.000000000000000000
-        Top = 555.590910000000000000
+        Top = 551.811380000000000000
         Width = 748.346940000000000000
       end
       object MasterHeader1: TfrxHeader
         Height = 14.000000000000000000
-        Top = 480.000310000000000000
+        Top = 476.220780000000000000
         Width = 748.346940000000000000
         object Memo52: TfrxMemoView
           Left = 23.000000000000000000
@@ -1180,7 +1412,7 @@ object mainForm: TmainForm
       end
       object MasterHeader2: TfrxHeader
         Height = 14.000000000000000000
-        Top = 597.165740000000000000
+        Top = 593.386210000000000000
         Width = 748.346940000000000000
         object Memo63: TfrxMemoView
           Left = 23.000000000000000000

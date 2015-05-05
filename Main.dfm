@@ -1,6 +1,6 @@
 object mainForm: TmainForm
-  Left = 265
-  Top = 299
+  Left = 441
+  Top = 297
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1072' - 525'
@@ -343,7 +343,7 @@ object mainForm: TmainForm
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 41904.513054375000000000
-    ReportOptions.LastChange = 42125.013011990740000000
+    ReportOptions.LastChange = 42129.712140833300000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -756,7 +756,7 @@ object mainForm: TmainForm
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8 = (
-            #1056#164#1057#8211#1056#187#1056#1109#1056#1029#1056#181#1056#1029#1056#1108#1056#1109' '#1056#8250'.'#1056#1113'. '#1057#8218#1056#181#1056#187'. 278-41-59')
+            #1056#1114#1056#1109#1057#8218#1056#1109#1057#1026#1056#176' '#1056#1116'.'#1056#8217'. '#1057#8218#1056#181#1056#187'. 278-41-59')
           ParentFont = False
         end
       end
